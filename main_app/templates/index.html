@@ -48,7 +48,7 @@
 				<p>Notes: {{ lesson.notes }}</p>
 				<!-- This works //-->
 				<p>Assignments Due: {% for assignment in assignments %}{% if assignment.lesson_due == lesson %}<a href={{ assignment.assignment_link }}>{{ assignment.title }}</a>{% endif %}{% endfor %}</p>
-				<p>Helpful Links: {% for classfile in classfiles %}{% if classfile.lesson_being_used == lesson %}{{ classfile.title }}{% endif %}{% endfor %}</p>
+				<p>Helpful Links: {% for classfile in classfiles %}{% if classfile.lesson_being_used == lesson %}<a href={{ classfile.link }}>{{ classfile.title }}</a>{% endif %}{% endfor %}</p>
 				<p>{{ lesson.date }}</p>
 			</div>
 			<!-- 
