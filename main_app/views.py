@@ -25,6 +25,10 @@ def resources(request):
 
     return render(request, 'resources.html', {})
 
+def about(request):
+
+    return render(request, 'about.html', {})
+
 
 
 
