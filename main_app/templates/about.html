@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+	<link rel="icon" href="{% static 'favicon.ico' %}">
+	<!-- https://stackoverflow.com/questions/4888377/how-to-add-a-browser-tab-icon-favicon-for-a-website//-->
+	<title>IT394</title>
+</head>
+<body>
+
+	<div class = 'navbar navbar-inverse navbar-fixed-top'>
+		<a href="/" class="navbar-brand">IT394</a>
+		<div class='container'>
+			<!-- 
+			<a href="/" class="navbar-brand">
+				<img src="{% static 'images/cloud.png' %}" alt="Cloud Pic">
+			</a>
+			//-->
+			<ul style='width: 100%' class = 'nav navbar-nav navbar-center'>
+				<li><a class='active' href="/">Lessons</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="resources">Resources</a></li>
+			</ul>
+			
+		</div>
+	</div>
+
+	<main class="container" role="main">
+	<h1>this is where the content goes</h1>
+	</main>
+	<script src={% static 'assets/js/jquery.min.js' %}></script>
+	<script src={% static 'assets/js/skel.min.js' %}></script>
+	<script src={% static 'assets/js/util.js' %}></script>
+	<script src={% static 'assets/js/main.js' %}></script>
+</body>
+</html>
