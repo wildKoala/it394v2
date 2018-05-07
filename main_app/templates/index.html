@@ -1,0 +1,68 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+	<link rel="icon" href="{% static 'favicon.ico' %}">
+	<!-- https://stackoverflow.com/questions/4888377/how-to-add-a-browser-tab-icon-favicon-for-a-website//-->
+	<title>IT394</title>
+</head>
+<body>
+
+	<div class = 'navbar navbar-inverse navbar-fixed-top'>
+		<a href="/" class="navbar-brand">IT394</a>
+		<div class='container'>
+			<!-- 
+			<a href="/" class="navbar-brand">
+				<img src="{% static 'images/cloud.png' %}" alt="Cloud Pic">
+			</a>
+			//-->
+			<ul style='width: 100%' class = 'nav navbar-nav navbar-center'>
+				<li><a class='active' href="/">Lessons</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="resources">Resources</a></li>
+			</ul>
+			
+		</div>
+	</div>
+
+	<section id="banner">
+		<div class="inner">
+			<h1>IT394 <span>   Distributed Application Development</span></h1>
+		</div>
+	</section>
+
+	<main class="container" role="main">
+		{% for lesson in lessons %}
+		<a name="{{ lesson.date }}"></a>
+		<div class="all_lessons panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Lesson {{ lesson.number }}: {{ lesson.title }}</h2>
+			</div>
+			<div class="panel-body">
+				<p>Lesson Objectives: {{ lesson.objs }}</p>
+				<p>Reading: {{ lesson.reading }}</p>
+				<p>Notes: {{ lesson.notes }}</p>
+				<!-- This works //-->
+				<p>Assignments Due: {% for assignment in assignments %}{% if assignment.lesson_due == lesson %}{{ assignment.title }}{% endif %}{% endfor %}</p>
+				<p>Helpful Links: {% for classfile in classfiles %}{% if classfile.lesson_being_used == lesson %}{{ classfile.title }}{% endif %}{% endfor %}</p>
+				<p>{{ lesson.date }}</p>
+			</div>
+			<!-- 
+				https://stackoverflow.com/questions/15328679/how-to-use-border-with-bootstrap
+			//-->
+		</div>
+		{% endfor %}
+	</main>
+	<script src={% static 'assets/js/jquery.min.js' %}></script>
+	<script src={% static 'assets/js/skel.min.js' %}></script>
+	<script src={% static 'assets/js/util.js' %}></script>
+	<script src={% static 'assets/js/main.js' %}></script>
+
+	 <!-- {{ formatted_time }} in place of hardcoding here. "March 28, 2018" WORKING-->
+	 <script> window.location.hash="{{ formatted_time }}"; </script>
+</body>
+</html>
