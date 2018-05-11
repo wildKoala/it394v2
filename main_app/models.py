@@ -33,7 +33,8 @@ class Lesson(models.Model):
 	help_resources = models.CharField(max_length=100,default='-')
     
 	def __str__(self):
-		return self.title
+		desired_string = "Lesson " + str(self.number) + ": " + self.title
+		return desired_string
 
 class Assignment(models.Model): # this table will be related to lesson.
 	lesson_due = models.ForeignKey(Lesson, on_delete=models.CASCADE)
